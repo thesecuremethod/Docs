@@ -16,11 +16,11 @@ The deployment is shown as the diagram below.
 
 The key idea is from FireNet point of view, the ingress inspection is simply a VPC to VPC traffic inspection. This is accomplished by 
 
- a. Placing an Internet facing AWS ALB/NLB in a spoke VPC in a separate domain (in the diagram, this domain is called Ingress domain.) from the domains where applications reside (Application domain). 
+ a. Placing an Internet facing AWS ALB/NLB in a spoke VPC, in a separate domain (in the diagram, this domain is called Ingress domain.) from the domains where applications reside (Application domain). 
  #. Build a connection policy to connect the Ingress domain with the Application domain. 
  #. Connect the Application domain traffic that requires inspection with the Aviatrix Firewall Domain.
 
-In this unified architecture, firewalls can be used for Ingress, Egress, North-South and VPC to VPC filtering. The solution does not need AWS ALB/NLB to directly attach to firewall instances which then requires firewall instances to source NAT the incoming traffic from the Internet. Firewall instances can scale out as applications scale for all traffic types. 
+In this unified architecture, the firewalls can be used for Ingress, Egress, North-South and VPC to VPC filtering. The solution does not need AWS ALB/NLB to directly attach to firewall instances which then requires the firewall instances to source NAT the incoming traffic from the Internet. The firewall instances can scale out as applications scale for all traffic types. 
 
 .. Note::
 
@@ -36,27 +36,28 @@ In this unified architecture, firewalls can be used for Ingress, Egress, North-S
  - Follow `Aviatrix Firewall Network workflow <https://docs.aviatrix.com/HowTos/firewall_network_workflow.html>`_ to launch FireNet gateways and firewall instances. Enable `Egress <https://docs.aviatrix.com/HowTos/firewall_network_faq.html#how-do-i-enable-egress-inspection-on-firenet>`_ if desired.
 
  - Follow `Aviatrix TGW Orchestrator workflow <https://docs.aviatrix.com/HowTos/tgw_plan.html>`_ to:
-	-  Create an Ingress domain (this domain can be named something else and can be an existing domain, just make sure it is in a different domain than Application domain.). 
-	- Build Connection policy between the Ingress domain and the Application domain. 
-	- Build Connection policy between Application domain and Firewall domain so that traffic in and out of the domain is inspected. 
+	-  Create an Ingress domain (this domain can be named something else and can be an existing domain, just make sure it is in a different domain than the Application domain.). 
+	- Build a Connection policy between the Ingress domain and the Application domain. 
+	- Build a Connection policy between Application domain and Firewall domain so that traffic in and out of the domain is inspected. 
  	- Attach the Application domain VPC (Spoke-2 in the diagram) to the TGW. 
 	- Attach the Ingress domain VPC (Spoke-1 in the diagram) to the TGW.  
 
 2. Create AWS NLB
 -------------------------------------
 
-In Ingress domain VPC (Spoke-1), create an AWS NLB, make sure you select the following. 
+In the Ingress domain VPC (Spoke-1), create an AWS NLB, make sure you select the following. 
 
- - Select internet-facing
- - Routing Target group should be IP
+ - Select 'internet-facing'
+ - Routing Target group should be 'IP'
 
 
 3. Ready to go!
 ---------------
 
- - From the AWS Console, make sure NLB target group is in healthy state.
- - Run a https request on the NLB DNS name
-- The application can also reach Internet through firewall instances if you enable Egress on the FireNet.  
+ - From the AWS Console, make sure NLB target group is in a healthy state.
+ - Run an https request on the NLB DNS name
+- The application can also reach the Internet through firewall instances if you enable Egress on the FireNet.  
+
 4. Capturing Client IP
 -------------------------
 
