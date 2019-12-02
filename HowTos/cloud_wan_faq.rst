@@ -10,17 +10,17 @@ Aviatrix CloudWAN FAQ
 What is the Aviatrix CloudWAN?
 ---------------------------------------
 
-Aviatrix CloudWAN is a feature where Aviatrix Controller manages and help connect on-prem Cisco IOS Routers to the cloud directly. 
+Aviatrix CloudWAN is a feature where the Aviatrix Controller manages and helps connect your on-prem Cisco IOS Routers to the cloud directly. 
 
-CloudWAN can be used to fulfill the following tasks. 
+CloudWAN can be used to fulfill the following tasks: 
 
  1. Manage multiple Cisco IOS Routers from the Aviatrix Controller. This includes uploading and viewing the IOS configuration, making configuration changes and monitoring the health and stats of these routers. 
- #. Auto connect Cisco IOS routers to the Aviatrix Transit Gateway or AWS TGW with IPSEC VPN over the Internet, thus allowing them to be part of the Transit Network where they gain connectivity to Spoke VPCs. 
+ #. Auto-Connect Cisco IOS routers to the Aviatrix Transit Gateway or AWS TGW with an IPSEC VPN over the Internet, thus allowing them to be part of the Transit Network where they gain connectivity to Spoke VPCs. 
 
 What are the CloudWAN deployment architectures?
 --------------------------------------------------
 
-There are three ways to deploy CloudWAN. 
+There are three ways to deploy CloudWAN:
 
 CloudWAN Deployment 1
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -39,17 +39,17 @@ Alternatively you can deploy CloudWAN as an attachment to TGW where the Aviatrix
 CloudWAN Deployment 3
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In this deployment IPsec tunnels are built directly to TGW VPN.
+In this deployment, the IPsec tunnels are built directly to the TGW VPN service. 
 
 |cloud_wan_3|
 
 What are the benefits of CloudWAN?
 -----------------------------------------
 
- - **No Friction** Leverage what you have already invested in the on-prem edge router for connecting to the cloud. 
- - **Shortest Latency** Leverage AWS Global Accelerator to connect your on-prem routers to the nearest AWS edge and route through the AWS backbone with the optimal path. 
- - **Automation** Avoid human errors and the complexity of VPN configuration when building VPN connections to the cloud. 
- - **Centrally Managed** Use the single pane of glass to both provision and monitor router health and stats. 
+ - **No Friction** : Leverage what you have already invested in the on-prem edge router for connecting to the cloud. 
+ - **Shortest Latency** : Leverage AWS Global Accelerator to connect your on-prem routers to the nearest AWS edge and route through the AWS backbone with the optimal path. 
+ - **Automation** : Avoid human errors and the complexity of VPN configuration when building VPN connections to the cloud. 
+ - **Centrally Managed** : Use the single pane of glass to both provision and monitor router health and stats. 
 
 How does CloudWAN work?
 --------------------------
@@ -58,9 +58,9 @@ CloudWAN leverages AWS Global Accelerator and the AWS backbone for the shortest 
 
 |global_accelerator|
 
-For example, if the application is in us-west-2 and you have a branch office in Singapore country. If you built an IPSEC tunnel to the 
+For example: If you have an application in us-west-2 and you have a branch office in Singapore, then you build an IPSEC tunnel to the 
 gateway in us-west-2 without deploying CloudWAN, the traffic initiated from Singapore typically traverse through many ISP carriers and eventually
-to AWS us-west-2. On the other hand, with CloudWAN, traffic from Singapore gets to the first ISP, hops onto the AWS edge in the area and 
+to AWS us-west-2. On the other hand if you use CloudWAN, traffic from Singapore gets to the first ISP, hops onto the AWS edge in the area and 
 moves through the uncongested AWS backbone to us-west-2. Both latency and jitter should be minimal. 
 
 
