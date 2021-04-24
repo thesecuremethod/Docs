@@ -22,8 +22,8 @@ The scenario is described in the following diagram:
 
 ::
 
-  VPC       CIDR = 10.20.0.0/20, instance-1 in VPC-1 has an IP address 10.24.1.4.
-  On-Prem   CIDR = 10.20.0.0/20, host-1 in On-Prem has an IP address 10.24.7.101.
+  VPC       CIDR = 10.24.0.0/20, instance-1 in VPC-1 has an IP address 10.24.1.4.
+  On-Prem   CIDR = 10.24.0.0/20, host-1 in On-Prem has an IP address 10.24.7.101.
 
 The traditional solution is to build IPSEC tunnel between the two networks and use SNAT/DNAT rules to translate each addresses, as
 demonstrated in this `example. <https://docs.aviatrix.com/HowTos/connect_overlap_cidrs.html>`_. Such solution requires a potentially
